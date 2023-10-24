@@ -4,22 +4,32 @@ namespace StringCalculator;
 public class StringCalculator
 {
 
+
 	public int Add(string numbers)
 	{
+		var delimeters = new List<char> { ',', '\n' };
 		if (numbers == "")
 		{
 			return 0;
 		}
 		if (numbers.StartsWith("//"))
 		{
-			var newDelimeter = numbers.Substring(2, 1);
-			var realNumbers = numbers.Substring(4);
-			return realNumbers.Split(newDelimeter).Select(int.Parse).Sum();
+			delimeters.Add(numbers[2]);
+			//numbers = numbers[4..];
+			return parseNumbers(numbers[4..], delimeters);
 		}
 
-		return numbers.Split(',', '\n').Select(int.Parse).Sum();
+		int result = parseNumbers(numbers, delimeters);
+		return result;
 	}
 
+	private int parseNumbers(string numbers, List<char> delimeters)
+	{
+		return numbers
+					.Split(delimeters.ToArray())
+					.Select(int.Parse)
+					.Sum();
+	}
 
 
 }
