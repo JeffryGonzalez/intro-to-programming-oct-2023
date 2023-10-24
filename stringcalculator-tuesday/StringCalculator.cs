@@ -15,12 +15,9 @@ public class StringCalculator
 		if (numbers.StartsWith("//"))
 		{
 			delimeters.Add(numbers[2]);
-			//numbers = numbers[4..];
 			return parseNumbers(numbers[4..], delimeters);
 		}
-
-		int result = parseNumbers(numbers, delimeters);
-		return result;
+		return parseNumbers(numbers, delimeters);
 	}
 
 	private int parseNumbers(string numbers, List<char> delimeters)
