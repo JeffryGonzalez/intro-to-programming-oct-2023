@@ -56,6 +56,7 @@ public class StringCalculatorTests
 	}
 	[Theory]
 	[InlineData("//;\n1;2", 3)]
+	[InlineData("//*\n1*3", 4)]
 
 	public void CustomeDelimeter(string input, int expected)
 	{

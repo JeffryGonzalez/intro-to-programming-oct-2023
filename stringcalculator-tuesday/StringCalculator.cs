@@ -12,7 +12,9 @@ public class StringCalculator
 		}
 		if (numbers.StartsWith("//"))
 		{
-			return 3;
+			var newDelimeter = numbers.Substring(2, 1);
+			var realNumbers = numbers.Substring(4);
+			return realNumbers.Split(newDelimeter).Select(int.Parse).Sum();
 		}
 
 		return numbers.Split(',', '\n').Select(int.Parse).Sum();
