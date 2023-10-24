@@ -55,7 +55,7 @@ public class StringCalculatorTests
 		Assert.Equal(expected, result);
 	}
 	[Theory]
-	[InlineData("“//;\n1;2”", 3)]
+	[InlineData("//;\n1;2", 3)]
 
 	public void CustomeDelimeter(string input, int expected)
 	{
