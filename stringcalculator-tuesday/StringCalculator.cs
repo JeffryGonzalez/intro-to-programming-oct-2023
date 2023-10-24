@@ -10,8 +10,8 @@ public class StringCalculator
 		{
 			return 0;
 		}
-		if (numbers.Contains('\n')) return 6;
-		return numbers.Split(',').Select(int.Parse).Sum();
+
+		return numbers.Split(',', '\n').Select(int.Parse).Sum();
 	}
 
 

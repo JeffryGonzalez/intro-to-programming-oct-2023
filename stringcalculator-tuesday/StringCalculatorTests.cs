@@ -47,6 +47,7 @@ public class StringCalculatorTests
 
 	[Theory]
 	[InlineData("1,2\n3", 6)]
+	[InlineData("1\n2", 3)]
 	public void MixedDelimeters(string input, int expected)
 	{
 		var calculator = new StringCalculator();
