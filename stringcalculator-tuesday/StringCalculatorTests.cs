@@ -54,4 +54,13 @@ public class StringCalculatorTests
 		var result = calculator.Add(input);
 		Assert.Equal(expected, result);
 	}
+	[Theory]
+	[InlineData("“//;\n1;2”", 3)]
+
+	public void CustomeDelimeter(string input, int expected)
+	{
+		var calculator = new StringCalculator();
+		var result = calculator.Add(input);
+		Assert.Equal(expected, result);
+	}
 }
