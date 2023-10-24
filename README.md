@@ -1,9 +1,6 @@
 # For the Intro to Programming Class
 
-# Monday - 10/23
-- Set up our Git Stuff
+## Links And Stuff
 
-- Using the Git Tools in Visual Studio Code
-
-
-- Yet Another Change
+- [Jeff's Visual Studio Course](https://hypertheory.podia.com/mastering-your-development-tools-visual-studio)
+- [C# 'Certification'](https://www.freecodecamp.org/learn/foundational-c-sharp-with-microsoft/)
