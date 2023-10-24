@@ -27,6 +27,7 @@ public class StringCalculatorTests
 	[Theory]
 	[InlineData("1,1", 2)]
 	[InlineData("10,2", 12)]
+	[InlineData("108,10", 118)]
 	public void TwoDigits(string input, int expected)
 	{
 		var calculator = new StringCalculator();

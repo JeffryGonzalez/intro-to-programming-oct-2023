@@ -8,7 +8,10 @@ public class StringCalculator
 	{
 		if (numbers.Contains(','))
 		{
-			return 2;
+			var lhs = numbers.Substring(0, numbers.IndexOf(','));
+			var rhs = numbers.Substring(numbers.IndexOf(",") + 1);
+
+			return int.Parse(lhs) + int.Parse(rhs);
 		}
 		if (numbers == "")
 		{
