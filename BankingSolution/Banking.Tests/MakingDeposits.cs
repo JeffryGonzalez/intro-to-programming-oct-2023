@@ -2,6 +2,7 @@
 using Banking.Domain;
 
 namespace Banking.Tests;
+
 public class MakingDeposits
 {
 
