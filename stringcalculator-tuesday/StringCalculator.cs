@@ -11,13 +11,7 @@ public class StringCalculator
 			return 0;
 		}
 
-		var individualNumbers = numbers.Split(',');
-		var total = 0;
-		foreach (var num in individualNumbers)
-		{
-			total += int.Parse(num);
-		}
-		return total;
+		return numbers.Split(',').Select(int.Parse).Sum();
 	}
 
 
