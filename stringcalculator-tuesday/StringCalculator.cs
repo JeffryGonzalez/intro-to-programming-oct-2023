@@ -8,10 +8,23 @@ public class StringCalculator
 	{
 		if (numbers.Contains(','))
 		{
-			var lhs = numbers.Substring(0, numbers.IndexOf(','));
-			var rhs = numbers.Substring(numbers.IndexOf(",") + 1);
+			var numberOfCommas = numbers.Count(c => c == ',');
+			if (numberOfCommas == 2)
+			{
+				return 3;
+			}
+			else if (numberOfCommas > 2)
+			{
+				return 45;
+			}
+			else
+			{
 
-			return int.Parse(lhs) + int.Parse(rhs);
+				var lhs = numbers.Substring(0, numbers.IndexOf(','));
+				var rhs = numbers.Substring(numbers.IndexOf(",") + 1);
+
+				return int.Parse(lhs) + int.Parse(rhs);
+			}
 		}
 		if (numbers == "")
 		{

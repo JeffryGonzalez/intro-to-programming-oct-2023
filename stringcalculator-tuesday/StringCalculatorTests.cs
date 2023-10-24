@@ -34,4 +34,14 @@ public class StringCalculatorTests
 		var result = calculator.Add(input);
 		Assert.Equal(expected, result);
 	}
+	[Theory]
+	[InlineData("1,1,1", 3)]
+	[InlineData("1,2,3,4,5,6,7,8,9", 45)]
+
+	public void Arbitrary(string input, int expected)
+	{
+		var calculator = new StringCalculator();
+		var result = calculator.Add(input);
+		Assert.Equal(expected, result);
+	}
 }
