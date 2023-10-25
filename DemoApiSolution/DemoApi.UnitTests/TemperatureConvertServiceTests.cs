@@ -1,4 +1,6 @@
 ﻿
+
+
 using DemoApi.Services;
 
 namespace DemoApi.UnitTests;
@@ -9,6 +11,7 @@ public class TemperatureConvertServiceTests
 	public void NoFeeOnWeekends()
 	{
 		var service = new TemperatureConverterService();
+
 
 		ConversionWithFeeResponse response = service.ConvertFtoC(100F);
 
