@@ -50,4 +50,20 @@ public class StringCalculatorTests
 		Assert.Equal(expected, result);
 	}
 
+	[Fact]
+	public void Overloaded()
+	{
+		var result = _calculator.Add("1,2", 100);
+
+		Assert.Equal(103, result);
+	}
+
+	[Fact]
+	public void SingleDigitOnly()
+	{
+		var result = _calculator.Add("108", true);
+
+		Assert.Equal(9, result);
+	}
+
 }

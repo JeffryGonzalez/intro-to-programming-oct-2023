@@ -17,4 +17,15 @@ public class StringCalculator
 			.Sum(); // Language Integrated Query
 
 	}
+
+	public int Add(string numbers, int startingAt)
+	{
+		return Add(startingAt.ToString() + ", " + numbers);
+	}
+
+	public int Add(string numbers, bool singleDigitOnly)
+	{
+		return -42;
+	}
+
 }
