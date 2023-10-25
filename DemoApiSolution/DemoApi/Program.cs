@@ -25,9 +25,11 @@ app.MapGet("/temperatures/farenheit/{temp:float}/celcius", (float temp) =>
 app.MapGet("/temperatures/celcius/{temp:float}/farenheit", (float temp) =>
 {
 	var result = TemperatureConverter.ConvertFromC(temp);
-	return new ConversionResponse(temp, result);
+	return new ConversionResponse(result, temp);
 });
 
 app.Run(); // "Blocking Call"
 
 public record ConversionResponse(float F, float C);
+
+public partial class Program { }
