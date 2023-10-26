@@ -12,12 +12,17 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<TemperatureConverterService>();
 builder.Services.AddScoped<ICalculateFees, StandardFeeCalculator>();
 builder.Services.AddScoped<ISystemTime, SystemTime>();
+builder.Services.AddScoped<TodoListService>();
 
 var connectionString = builder.Configuration.GetConnectionString("database") ?? throw new Exception("No Database");
-Console.WriteLine($"Using the connection string {connectionString}");
+
 builder.Services.AddMarten(options =>
 {
 	options.Connection(connectionString);
+	if (builder.Environment.IsDevelopment())
+	{
+		options.AutoCreateSchemaObjects = Weasel.Core.AutoCreate.All;
+	}
 });
 var app = builder.Build();
 
@@ -27,6 +32,13 @@ if (app.Environment.IsDevelopment())
 	app.UseSwagger();
 	app.UseSwaggerUI();
 }
+
+
+app.MapPost("/todo-list", async (CreateToDoItem item, TodoListService service) =>
+{
+	var response = await service.CreateTodoItem(item);
+	return Results.Ok(response);
+});
 
 app.MapGet("/temperatures/farenheit/{temp:float}/celcius", (float temp, TemperatureConverterService service) =>
 {
