@@ -3,6 +3,12 @@ namespace StringCalculator;
 
 public class StringCalculator
 {
+	private readonly ILogger _logger;
+
+	public StringCalculator(ILogger logger)
+	{
+		_logger = logger;
+	}
 
 	public int Add(string numbers)
 	{
@@ -12,9 +18,12 @@ public class StringCalculator
 		}
 
 		// select - map
-		return numbers.Split(',', '\n') // => ["1", "2", "3"...]
+		var result = numbers.Split(',', '\n') // => ["1", "2", "3"...]
 			.Select(int.Parse) // => [1,2,3,4,6]
 			.Sum(); // Language Integrated Query
+
+		_logger.Write(result.ToString());
+		return result;
 
 	}
 
@@ -28,4 +37,9 @@ public class StringCalculator
 		return -42;
 	}
 
+}
+
+public interface ILogger
+{
+	void Write(string message);
 }
