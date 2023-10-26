@@ -1,4 +1,5 @@
 using DemoApi.Services;
+using Marten;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,12 @@ builder.Services.AddScoped<TemperatureConverterService>();
 builder.Services.AddScoped<ICalculateFees, StandardFeeCalculator>();
 builder.Services.AddScoped<ISystemTime, SystemTime>();
 
+var connectionString = builder.Configuration.GetConnectionString("database") ?? throw new Exception("No Database");
+Console.WriteLine($"Using the connection string {connectionString}");
+builder.Services.AddMarten(options =>
+{
+	options.Connection(connectionString);
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
