@@ -24,7 +24,15 @@ public class TodoListService
 	public async Task<IReadOnlyList<TodoItemCreated>> GetAllAsync()
 	{
 
-		return await _documentSession.Query<TodoItemCreated>().ToListAsync();
+		try
+		{
+			return await _documentSession.Query<TodoItemCreated>().ToListAsync();
+		}
+		catch (Exception)
+		{
+
+			throw;
+		}
 	}
 
 	public async Task<TodoItemCreated?> GetTodoItemAsync(Guid id)
