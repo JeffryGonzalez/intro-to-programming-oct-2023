@@ -11,7 +11,7 @@ public class TodoListService
 		_documentSession = documentSession;
 	}
 
-	public async Task<TodoItemCreated> CreateTodoItem(CreateToDoItem item)
+	public async Task<TodoItemCreated> CreateTodoItemAsync(CreateToDoItem item)
 	{
 		var newItem = new TodoItemCreated(Guid.NewGuid(), item.Description, false);
 
@@ -21,6 +21,17 @@ public class TodoListService
 		return newItem;
 	}
 
+	public async Task<IReadOnlyList<TodoItemCreated>> GetAllAsync()
+	{
+		return await _documentSession.Query<TodoItemCreated>().ToListAsync();
+	}
+
+	public async Task<TodoItemCreated?> GetTodoItemAsync(Guid id)
+	{
+		return await _documentSession.Query<TodoItemCreated>()
+			.Where(item => item.Id == id)
+			.SingleOrDefaultAsync();
+	}
 }
 
 
