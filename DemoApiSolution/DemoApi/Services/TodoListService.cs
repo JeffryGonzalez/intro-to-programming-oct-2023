@@ -23,6 +23,7 @@ public class TodoListService
 
 	public async Task<IReadOnlyList<TodoItemCreated>> GetAllAsync()
 	{
+
 		return await _documentSession.Query<TodoItemCreated>().ToListAsync();
 	}
 

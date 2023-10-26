@@ -1,5 +1,6 @@
 using DemoApi.Services;
 using Marten;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,8 +49,10 @@ app.MapGet("/todo-list/{id:Guid}", async (Guid id, TodoListService service) =>
 	}
 });
 
-app.MapGet("/todo-list", async (TodoListService service) =>
+app.MapGet("/todo-list", async (TodoListService service, [FromServices] ILogger<Program> logger) =>
 {
+	logger.LogInformation("Getting this todo list");
+
 	var response = await service.GetAllAsync();
 	return Results.Ok(response);
 });
