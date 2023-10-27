@@ -14,14 +14,15 @@ public class StringCalculatorInterationTests
 	[Theory]
 	[InlineData("1")]
 	[InlineData("2")]
+	[InlineData("1,3")]
 	public void WritesToLogger(string numbers)
 	{
 		// when 
-		_calculator.Add(numbers);
+		var result = _calculator.Add(numbers);
 
 		// then
 		// Does "1" get written to the logger's write method?
-		_logger.Received().Write(numbers);
+		_logger.Received().Write(result.ToString());
 		_webService.DidNotReceive().NofityOfLoggingFailure();
 	}
 

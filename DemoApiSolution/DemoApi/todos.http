@@ -4,7 +4,7 @@ POST http://localhost:1337/todo-list
 Content-Type: application/json
 
 {
-  "description": "Wash Cars"
+ 
 }
 
 

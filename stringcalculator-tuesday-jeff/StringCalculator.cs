@@ -26,7 +26,7 @@ public class StringCalculator
 
 		try
 		{
-			_logger.Write(numbers);
+			_logger.Write(result.ToString());
 		}
 		catch (LoggingException)
 		{
