@@ -16,10 +16,24 @@ public class Account
 
 	public void Withdraw(decimal amountToWithdraw)
 	{
+		OverdraftNotAllowedGuard(amountToWithdraw);
+		AcceptableTransactionAmountGuard(amountToWithdraw);
+		_balance -= amountToWithdraw;
+	}
+
+	private static void AcceptableTransactionAmountGuard(decimal amountToWithdraw)
+	{
+		if (amountToWithdraw <= 0)
+		{
+			throw new ArgumentException("Only amounts > 0 can be used in a transaction");
+		}
+	}
+
+	private void OverdraftNotAllowedGuard(decimal amountToWithdraw)
+	{
 		if (amountToWithdraw > _balance)
 		{
-			return;
+			throw new ArgumentException("Overdraft Not Allowed");
 		}
-		_balance -= amountToWithdraw;
 	}
 }

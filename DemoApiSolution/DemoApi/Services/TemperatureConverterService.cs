@@ -1,6 +1,6 @@
 ﻿namespace DemoApi.Services;
 
-public class TemperatureConverterService
+public class TemperatureConverterService // Manager. 
 {
 	private readonly ICalculateFees _feeCalculator;
 
@@ -27,6 +27,7 @@ public class TemperatureConverterService
 		var convertedTemp = TemperatureConverter.ConvertFromC(temp);
 		return new ConversionWithFeeResponse(convertedTemp, temp, fee);
 	}
+
 }
 
 
